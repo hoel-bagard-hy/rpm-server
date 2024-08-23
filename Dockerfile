@@ -16,7 +16,8 @@ RUN echo "proxy_username=$PROXY_USERNAME" >> /etc/dnf/dnf.conf && \
 COPY assets/Cisco_Umbrella_Root_CA.cer /etc/pki/ca-trust/source/anchors/
 RUN update-ca-trust
 
-# RUN dnf install -y nginx=1.22.1-9 createrepo
+RUN dnf install -y nginx-1:1.20.1-14.el9_2.1.x86_64 createrepo_c-0.20.1-2.el9.x86_64 && \
+    dnf clean all
 
 # COPY src/nginx.conf /etc/nginx/nginx.conf
 # COPY assets/devpi-cert.pem /etc/nginx/certs/cert.crt
@@ -26,7 +27,8 @@ RUN update-ca-trust
 # COPY src/entrypoint.sh /scripts/entrypoint.sh
 # COPY src/initial_setup.sh /scripts/initial_setup.sh
 # COPY src/devpi-client /usr/local/bin/
-# WORKDIR /data
+
+WORKDIR /data/packages
 
 # ENTRYPOINT ["/scripts/entrypoint.sh"]
 CMD ["bash"]
