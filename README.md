@@ -88,7 +88,7 @@ docker build \
     tests
 ```
 
-You can then run the docker and try to install packages as described above.
+You can then run the docker and try to install packages as described in [the user manual](./docs/user-manual.md).
 
 ```console
 docker run -it hoel/rpm-test
