@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # The actual setup was done by entering the commands manually, but this script should still be useful in
 # case a re-setup is necessary.
 
