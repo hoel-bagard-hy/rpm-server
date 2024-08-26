@@ -6,9 +6,10 @@
 ## Index
 
 - [References](#references)
-- [Setup](#pypi-repository-maintenance)
-- [Maintenance](#pypi-repository-maintenance)
+- [Setup](#rpm-repository-server-setup)
 - [Usage](#usage)
+  - [Adding a package](#adding-an-rpm-package)
+  - [Installing a package](#installing-a-package-from-the-private-repository)
 - [Test](#test)
 
 ## References
