@@ -1,0 +1,91 @@
+name: Lint CI
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main, master]
+    paths:
+      - "Dockerfile"
+      - "tests/Dockerfile"
+      - "src/**/*.sh"
+      - "README.md"
+      - "docs/**/*.md"
+      - ".github/workflows/lint.yaml"
+  pull_request:
+    paths:
+      - "Dockerfile"
+      - "tests/Dockerfile"
+      - "src/**/*.sh"
+      - "README.md"
+      - "docs/**/*.md"
+      - ".github/workflows/lint.yaml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref_name }}-${{ github.event.pull_request.number || github.sha }}
+  cancel-in-progress: true
+
+jobs:
+  hado-lint:
+    name: Check Dockerfile code formatting
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install hadolint
+        run: |
+          wget https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 -O ./hadolint
+          chmod +x hadolint
+
+      - name: Run hadolint
+        run: |
+          ./hadolint Dockerfile
+
+  shell-lint:
+    name: Check shell scripts' code formatting/linting
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install go
+        uses: actions/setup-go@v5
+        with:
+          go-version: "1.21"
+
+      - name: Install shfmt
+        run: go install mvdan.cc/sh/v3/cmd/shfmt@latest
+
+      - name: Run shfmt
+        run: |
+          shfmt -w src/*.sh
+
+      - name: Run ShellCheck
+        run: |
+          shellcheck src/*.sh
+
+      - uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Apply shfmt fixes
+
+  spelling-lint:
+    name: Check spelling
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install codespell
+        run: |
+          pip install codespell==2.2.6
+
+      - name: Run codespell
+        run: |
+          codespell docs README.md src/setup.sh Dockerfile tests/Dockerfile
