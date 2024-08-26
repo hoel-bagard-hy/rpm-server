@@ -42,7 +42,8 @@ docker run \
     --env HTTPS_PROXY=$HTTPS_PROXY \
     --name rpm-repository \
     -v /home/rpm:/data/packages \
-    -p 555:555 \
+    -p 514:514 \
+    -p 515:515 \
     hoel/rpm-repository
 ```
 
