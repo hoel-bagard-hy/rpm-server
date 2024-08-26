@@ -28,5 +28,4 @@ RUN echo "$SSL_CERT_KEY" >> /etc/nginx/certs/cert.key && \
 COPY src/entrypoint.sh /scripts/entrypoint.sh
 WORKDIR /data/packages
 
-# ENTRYPOINT ["/scripts/entrypoint.sh"]
-CMD ["bash"]
+ENTRYPOINT ["/scripts/entrypoint.sh"]
