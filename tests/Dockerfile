@@ -13,4 +13,4 @@ RUN echo "proxy=$PROXY_IP:8080" >> /etc/dnf/dnf.conf && \
 COPY assets/Cisco_Umbrella_Root_CA.cer /etc/pki/ca-trust/source/anchors/
 RUN update-ca-trust
 
-CMD ["/bash"]
+CMD ["bash"]
