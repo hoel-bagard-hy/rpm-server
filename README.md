@@ -23,7 +23,7 @@ docker build \
     -t hoel/rpm-repository \
     --build-arg PROXY_USERNAME="$(pass show admin_proxy_username)" \
     --build-arg PROXY_PASSWORD="$(pass show admin_proxy_password)" \
-    --build-arg SSL_CERT_KEY="$(pass show ssl/devpi-cert-key.pem)" \
+    --build-arg SSL_CERT_KEY="$(pass show ssl/rpm-cert-key.pem)" \
     .
 ```
 
