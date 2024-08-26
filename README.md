@@ -8,8 +8,6 @@
 - [References](#references)
 - [Setup](#rpm-repository-server-setup)
 - [Usage](#usage)
-  - [Adding a package](#adding-an-rpm-package)
-  - [Installing a package](#installing-a-package-from-the-private-repository)
 - [Test](#test)
 
 ## References
@@ -74,36 +72,7 @@ The proxy is not necessary for the server to operate. However it can be set by a
 
 ## Usage
 
-### Adding an RPM package
-
-To add a package, simply add the `.rpm` file to the folder containing the `.rpm` files. For example:
-
-```console
-scp openssl-1.0.2k-19.el7.x86_64.rpm 163.219.218.169:/home/rpm/el7-x86_64/
-```
-
-### Installing a package from the private repository
-
-#### First time setup
-
-On client machines, configure YUM to use the private repository by running the following command:
-
-```bash
-sudo echo "[hht]
-name=Hitachi High Tech Private Repo
-baseurl=http://163.219.218.169:514
-enabled=1
-gpgcheck=0" >> /etc/yum.repos.d/hht.repo
-```
-
-#### Installing a package
-
-To install a package from the private repository, you to make sure that the proxy is not set. This means removing it from `/etc/yum.conf` and un-setting the `http_proxy` environment variable. \
-Then disable all the repositories except the HHT one. For example:
-
-```console
-http_proxy= yum --disablerepo="*" --enablerepo="hht" install openssl-1.0.2k-19.el7.x86_64
-```
+See [the user manual](./docs/user-manual.md).
 
 ## Test
 
