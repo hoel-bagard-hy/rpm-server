@@ -56,5 +56,5 @@ To install a package from the private repository, first make sure that the proxy
 Then disable all the repositories except the HHT one. For example:
 
 ```console
-http_proxy= yum --disablerepo="*" --enablerepo="hht" install openssl-1.0.2k-19.el7.x86_64
+yum --disablerepo="*" --enablerepo="hht" install openssl-1.0.2k-19.el7.x86_64
 ```
