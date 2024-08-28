@@ -25,8 +25,10 @@ The private RPM server is located on HHT servers (in Harumi), to access it you m
 
 ### Access
 
-The server can be accessed at `163.219.218.169`, with port `514`.\
-The address is used when downloading/uploading packages, but can also be used to browse the packages in a web browser ([link](http://163.219.218.169:514/)).
+The server can be accessed at `163.219.218.169`, with port `514` for HTTP and `515` for HTTPS.\
+The address is used when downloading/uploading packages, but can also be used to browse the packages in a web browser ([HTTP link](http://163.219.218.169:514/), [HTTPS link](https://163.219.218.169:515/)).
+
+Note: the 515 port is currently not in the list of open ports, therefore the HTTPS version can only be accessed from the Harumi servers. If you wish to access it from your laptop, you will need to use port forwarding.
 
 ## Adding an RPM package
 
