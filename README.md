@@ -52,7 +52,7 @@ docker run \
     --name rpm-repository \
     -v /home/rpm:/data/packages \
     -p 3214:3214 \
-    -p 515:515 \
+    -p 3215:3215 \
     hoel/rpm-repository
 ```
 
