@@ -3,7 +3,7 @@
 # Do not use the minimal version of rocky linux, since it is indeed very minimal (no dnf/yum)
 FROM rockylinux:9.3
 
-EXPOSE 514
+EXPOSE 3214
 EXPOSE 515
 
 ARG SSL_CERT_KEY

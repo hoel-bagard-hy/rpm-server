@@ -1,5 +1,5 @@
 [hht]
 name=Hitachi High Tech Private Repo
-baseurl=http://163.219.218.169:514
+baseurl=http://163.219.218.169:3214
 enabled=1
 gpgcheck=0
