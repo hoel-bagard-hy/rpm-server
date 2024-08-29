@@ -52,7 +52,7 @@ rm ca-key.pem
 For the serial number, paste it into pass:
 
 ```console
-cat ca.srl
+xclip -sel c < ca.srl
 pass edit ssl/ca.srl
 rm ca.srl
 ```
@@ -60,7 +60,7 @@ rm ca.srl
 And same thing for the RPM certificate's key:
 
 ```console
-cat cert-key.pem
+xclip -sel c < cert-key.pem
 pass edit ssl/rpm-cert-key.pem
 rm cert-key.pem
 ```
