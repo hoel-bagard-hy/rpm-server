@@ -98,4 +98,5 @@ docker run -it hoel/rpm-test
 ## TODO
 
 - Make the server automatically restart, and make it start on boot.
+- Manage/keep track of the rpm packages (dvc + symbolic link ?).
 - Ideally we would want to use subdomains instead of ports (nginx). However that requires a DNS so...
