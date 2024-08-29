@@ -59,7 +59,8 @@ docker run \
 <details>
 <summary>Proxy</summary>
 
-The proxy is not necessary for the server to operate. However it can be set by adding the following arguments to the command above. This can be necessary when debugging.
+The proxy is not necessary for the server to operate. However it can be set by adding the following arguments to the command above. This can be necessary when debugging.\
+Be careful to not leave a docker container with the proxy settings on running as this creates a risk of your LDAP credentials leaking.
 
 ```bash
     --env HTTP_PROXY=$HTTP_PROXY \
