@@ -48,7 +48,7 @@ To start the server, use the following command.
 ```bash
 docker run \
     -dt \
-    --rm \
+    --restart always \
     --name rpm-repository \
     -v /home/rpm:/data/packages \
     -p 3214:3214 \
