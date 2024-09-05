@@ -11,7 +11,17 @@
 
 ## Repositories
 
-The RPM server currently holds only one repository (`el7-x86_64/`), which can be accessed at `163.219.218.169:3214`.
+The RPM server currently holds 4 repositories, which can be accessed at `163.219.218.169:3214`. The 4 repositories are separated into two categories 認可済みOSS ("approved") and 認可準備中OSS ("approval-pending"), leading to the following file structure:
+
+```
+163.219.218.169:3214/
+├── approved/
+│   ├── el7-x86_64
+│   └── el9-x86_64
+└── approval-pending/
+    ├── el7-x86_64
+    └── el9-x86_64
+```
 
 ## General instructions
 
@@ -33,7 +43,13 @@ The address is used when downloading/uploading packages, but can also be used to
 To add a package, simply add the `.rpm` file to the folder containing the `.rpm` files. For example:
 
 ```console
-scp openssl-1.0.2k-19.el7.x86_64.rpm 163.219.218.169:/home/rpm/el7-x86_64/
+scp openssl-1.0.2k-19.el7.x86_64.rpm 163.219.218.169:/home/rpm/approval-pending/el7-x86_64/
+```
+
+Then update the repo's metadata with:
+
+```bash
+ssh -t @163.219.218.169 'createrepo --update /home/rpm/approval-pending/el7-x86_64/'
 ```
 
 ## Installing a package from the private repository
@@ -46,9 +62,12 @@ On client machines, configure YUM to use the private repository by running the f
 sudo echo "[hht]
 name=Hitachi High Tech Private Repo
 baseurl=http://163.219.218.169:3214
+baseurl=http://163.219.218.169:3214/approved/el7-x86_64/
 enabled=1
 gpgcheck=0" >> /etc/yum.repos.d/hht.repo
 ```
+
+You can also add the `approval-pending` and/or `el9` repos in a similar fashion.
 
 ### Installing a package
 
