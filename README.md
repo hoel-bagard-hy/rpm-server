@@ -20,8 +20,9 @@ The private repository was originally populated with packages from [this repo](h
 
 ```bash
 docker build \
-    -t rocky.hht:5000/rpm/rpm-repository:latest \
-    -t rocky.hht:5000/rpm/rpm-repository:1.0 \
+    -t rpm/rpm-repository:latest \
+    -t docker-registry.infra.hht:5000/rpm/rpm-repository:latest \
+    -t docker-registry.infra.hht:5000/rpm/rpm-repository:1.1 \
     --build-arg PROXY_USERNAME="$(pass show admin_proxy_username)" \
     --build-arg PROXY_PASSWORD="$(pass show admin_proxy_password)" \
     --build-arg SSL_CERT_KEY="$(pass show ssl/rpm-cert-key.pem)" \
@@ -54,7 +55,7 @@ docker run \
     -v /home/rpm:/data/packages \
     -p 3214:3214 \
     -p 3215:3215 \
-    hoel/rpm-repository
+    rpm/rpm-repository:latest
 ```
 
 <details>
