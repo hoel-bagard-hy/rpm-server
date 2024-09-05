@@ -102,3 +102,4 @@ docker run -it hoel/rpm-test
 - Make the server automatically restart, and make it start on boot.
 - Manage/keep track of the rpm packages (dvc + symbolic link ?).
 - Ideally we would want to use subdomains instead of ports (nginx). However that requires a DNS so...
+- Run `createrepo --update` in CI (means that adding a package needs to be done through PR)
