@@ -34,15 +34,22 @@ docker build \
 Running the docker will create the server if required, then start it. The server's data (rpm files) is expected to be stored in the passed volume (here `/home/rpm`).\
 You can then browse the repository at `http://<server ip>:3214/`.
 
-The current configuration only supports/expects one repository. The expected file structure is:
+The current configuration contains 4 repositories. The expected file structure is:
 
 ```
-/home/rpm/el7-x86_64/
-├── bzip2-devel-1.0.6-13.el7.x86_64.rpm
-├── centos-release-scl-2-3.el7.centos.noarch.rpm
-├── centos-release-scl-rh-2-3.el7.centos.noarch.rpm
-├── ...
-└── zlib-devel-1.2.7-18.el7.x86_64.rpm
+
+/home/rpm/
+├── approved/
+│   ├── el7-x86_64
+│   │   ├── bzip2-devel-1.0.6-13.el7.x86_64.rpm
+│   │   ├── centos-release-scl-2-3.el7.centos.noarch.rpm
+│   │   ├── centos-release-scl-rh-2-3.el7.centos.noarch.rpm
+│   │   ├── ...
+│   │   └── zlib-devel-1.2.7-18.el7.x86_64.rpm
+│   └── el9-x86_64
+└── approval-pending/
+    ├── el7-x86_64
+    └── el9-x86_64
 ```
 
 To start the server, use the following command.
