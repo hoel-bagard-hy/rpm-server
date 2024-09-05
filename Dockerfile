@@ -21,7 +21,9 @@ RUN echo "proxy_username=$PROXY_USERNAME" >> /etc/dnf/dnf.conf && \
 COPY assets/Cisco_Umbrella_Root_CA.cer /etc/pki/ca-trust/source/anchors/
 RUN update-ca-trust
 
-RUN dnf install -y nginx-1:1.20.1-14.el9_2.1.x86_64 createrepo_c-0.20.1-2.el9.x86_64 && \
+# Do not pin the versions below, since this prevents installing security updates and (ironically) prevents reproducibility.
+# hadolint ignore=DL3041
+RUN dnf install -y nginx createrepo_c && \
     dnf clean all
 
 COPY src/nginx.conf /etc/nginx/nginx.conf

@@ -16,7 +16,9 @@ RUN echo "proxy=$PROXY_IP:8080" >> /etc/dnf/dnf.conf && \
     echo "proxy_password=$PROXY_PASSWORD" >> /etc/dnf/dnf.conf
 
 # Install packages that are useful when testing things.
-RUN dnf install -y vim-enhanced-2:8.2.2637-20.el9_1.x86_64 wget-1.21.1-7.el9.x86_64 && \
+# Do not pin the versions below, since this prevents installing security updates and (ironically) prevents reproducibility.
+# hadolint ignore=DL3041
+RUN dnf install -y vim-enhanced wget && \
     dnf clean all
 
 # Reset the dnf/yum config so since it is not possible to use the internal rpm repo and the proxy simultaneously.
