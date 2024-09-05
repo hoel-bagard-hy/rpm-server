@@ -61,7 +61,6 @@ On client machines, configure YUM to use the private repository by running the f
 ```bash
 sudo echo "[hht]
 name=Hitachi High Tech Private Repo
-baseurl=http://163.219.218.169:3214
 baseurl=http://163.219.218.169:3214/approved/el7-x86_64/
 enabled=1
 gpgcheck=0" >> /etc/yum.repos.d/hht.repo
