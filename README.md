@@ -31,7 +31,7 @@ docker build \
 ### Start the server
 
 Running the docker will create the server if required, then start it. The server's data (rpm files) is expected to be stored in the passed volume (here `/home/rpm`).\
-You can then browse the repository at `http://<server ip>:3214/` if browsing from a server. If browsing from your laptop you can create an ssh tunnel with `ssh -fN -L 13214:localhost:3214 rocky.hht` and then go to `http://localhost:13214/`.
+You can then browse the repository at `http://<server ip>:3214/`.
 
 The current configuration only supports/expects one repository. The expected file structure is:
 
