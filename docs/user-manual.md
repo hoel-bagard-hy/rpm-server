@@ -49,7 +49,7 @@ scp openssl-1.0.2k-19.el7.x86_64.rpm 163.219.218.169:/home/rpm/approval-pending/
 Then update the repo's metadata with:
 
 ```bash
-ssh -t @163.219.218.169 'createrepo --update /home/rpm/approval-pending/el7-x86_64/'
+ssh -t 163.219.218.169 'createrepo --update /home/rpm/approval-pending/el7-x86_64/'
 ```
 
 ## Installing a package from the private repository
