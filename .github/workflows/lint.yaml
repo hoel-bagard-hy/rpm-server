@@ -32,14 +32,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install hadolint
-        run: |
-          wget https://github.com/hadolint/hadolint/releases/download/v2.12.0/hadolint-Linux-x86_64 -O ./hadolint
-          chmod +x hadolint
-
-      - name: Run hadolint
-        run: |
-          ./hadolint Dockerfile
+      - name: Run Hadolint
+        uses: hadolint/hadolint-action@v2.0.0
+        with:
+          dockerfile: Dockerfile
+          recursive: true
 
   shell-lint:
     name: Check shell scripts' code formatting/linting
